@@ -38,7 +38,7 @@ class Block {
   }
 
   show() {
-    fill(255, 0, 0);
+    fill(0, 255, 0);
     rect(this.x, this.y, this.w);
   }
 
