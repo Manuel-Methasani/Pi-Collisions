@@ -1,7 +1,7 @@
 class Block {
   constructor(x, w, m, v) {
     this.x = x;
-    this.y = height - w;
+    this.y = cnv.height - w;
     this.w = w;
     this.m = m;
     this.v = v;
@@ -9,12 +9,12 @@ class Block {
   //returning the absolute value because more physically accurate
   //time cannot be negative, we would worry only on the time approaching 0
   time2Wall() {
-    return abs(this.x / this.v);
+    return Math.abs(this.x / this.v);
   }
 
   time2Block(other) {
     let dX = other.x - (this.x + this.w);
-    let dV = abs(this.v - other.v);
+    let dV = Math.abs(this.v - other.v);
     return dX / dV;
   }
   //multiplying by dT will just make the blocks move slower when a lot
@@ -38,8 +38,8 @@ class Block {
   }
 
   show() {
-    fill(0, 255, 0);
-    rect(this.x, this.y, this.w);
+    cnv.fill(0, 255, 0);
+    cnv.rect(this.x, this.y, this.w);
   }
 
 }
