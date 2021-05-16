@@ -4,6 +4,15 @@ let frameTime = 2,
 //first collision always with the smaller block
 let blockCollisionNext = true;
 
+
+//set initally block2.v to 0 and when a touch happens make it start with the
+//following function which also calls the AudioContext
+//basically creating a start screen
+function touchStarted() {
+  getAudioContext().resume();
+}
+
+
 function resetSketch() {
   block1 = new Block(100, 50, 1, 0);
   //scaling of the bigger block's width with the increase of its mass
@@ -24,6 +33,12 @@ var sketch = function(c) {
   c.xPos;
   c.yPos;
 
+  c.clack;
+
+  c.preload = function() {
+    c.clack = c.loadSound('addons/clack.wav')
+  }
+
   c.setup = function() {
     c.ctx = c.createCanvas(c.windowWidth, 200);
     c.digits = c.createSlider(1, 9, 1);
@@ -38,6 +53,7 @@ var sketch = function(c) {
     c.background(50);
 
     c.timeLeft = frameTime;
+    c.clackSound = false;
     c.doneStr = '';
 
     while (true) {
@@ -64,16 +80,23 @@ var sketch = function(c) {
         c.v2 = block2.bounce(block1);
         block1.v = c.v1;
         block2.v = c.v2;
+        c.clackSound = true;
         c.count++;
       } //wall collision
       else {
         block1.reverse();
+        c.clackSound = true;
         c.count++;
       }
       //update if block or wall collision whill happen next
       blockCollisionNext = !blockCollisionNext;
       c.timeLeft -= c.time2Collision;
     }
+
+    if (c.clackSound) {
+      c.clack.play();
+    }
+
     //happens if while loop breaks, basically it makes the blocks move
     //till collision happens which makes the while loop go through
     block1.move(c.timeLeft);
