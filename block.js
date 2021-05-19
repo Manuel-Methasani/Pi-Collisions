@@ -37,9 +37,9 @@ class Block {
     this.v *= -1;
   }
 
-  show() {
-    cnv.fill(0, 255, 0);
-    cnv.rect(this.x, this.y, this.w);
+  show(here) {
+    here.fill(0, 255, 0);
+    here.rect(this.x, this.y, this.w);
   }
 
 }
