@@ -1,4 +1,6 @@
-let size = 800;
+let cnv2Width = document.getElementById('gridContainer').getBoundingClientRect().width;
+let cnv2Height = document.getElementById('gridContainer').getBoundingClientRect().height;
+let size;
 let coordinates = [];
 
 //radius is sqrt mass of the moving block because the other one does not move
@@ -8,25 +10,23 @@ function radius() {
   return r;
 }
 
-function scaling() {
-
-}
-
 var sketch = function(s) {
   s.xPos;
   s.yPos;
 
   s.setup = function() {
-    s.ctx = s.createCanvas(size, size);
-    s.ctx.id('defaultCanvas1');
-    s.ctx.position(s.xPos, s.yPos);
+    s.ctx = s.createCanvas(cnv2Width * 2 / 3, cnv2Height * 4 / 9);
+    s.ctx.id('canvas1');
+    $('#canvas1').appendTo('#gridContainer');
     resetSketch();
     digits.addEventListener('change', function() {
       resetSketch();
     });
   }
 
+  //modify to consider the canvas a rectangle and not a square anymore
   s.graph = function() {
+    size = s.ctx.width;
     s.translate(size / 2, size / 2);
     //axis
     s.strokeWeight(1);
@@ -45,7 +45,7 @@ var sketch = function(s) {
   }
 
   s.draw = function() {
-    s.background(50);
+    s.background(56, 62, 66);
     s.graph();
 
     for (c in coordinates) {
@@ -53,6 +53,11 @@ var sketch = function(s) {
       s.xScl = size * 4 / 9;
       s.yScl = -(size * 4 / 9) / (block2.m ** 0.5);
       s.point(coordinates[c].x * s.xScl, coordinates[c].y * s.yScl);
+      if (c % 2 == 0) {
+        s.stroke(171, 100, 46);
+      } else {
+        s.stroke(116, 94, 61);
+      }
       if (c > 0) {
         s.line(coordinates[c - 1].x * s.xScl, coordinates[c - 1].y * s.yScl, coordinates[c].x * s.xScl, coordinates[c].y * s.yScl);
       }
@@ -60,9 +65,12 @@ var sketch = function(s) {
     }
   }
 
+  s.windowResized = function() {
+    let newWidth = document.getElementById('gridContainer').getBoundingClientRect().width;
+    let newHeight = document.getElementById('gridContainer').getBoundingClientRect().height;
+    s.resizeCanvas(newWidth * 2 / 3, newHeight * 4 / 9);
+  }
+
 }
 
 var cnv2 = new p5(sketch, 'canvas1');
-
-cnv2.xPos = 0;
-cnv2.yPos = 400;

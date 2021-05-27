@@ -1,0 +1,11 @@
+may want to add a way to interact with points, but better keep this
+demonstration part on the power point
+may want to toggle graph on and off so we can focus on collisions
+because there are way too many lines with higher digits that
+the circle just gets filled
+better color selection
+use arc from p5 library to create a function in graph.js so that, if a button
+is pressed or just for some digits value we draw alternatively colored arcs on
+the circumference, we need also the angle which we know through mass ratio(we could even just use the ratio and ignore atan())
+try doing the css grid not only with divs but also with other ones, the div canvas 0 has a script in it which adds another div
+the first one in some cases may be useless

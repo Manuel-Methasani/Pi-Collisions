@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 0.5fr 1fr 1fr 0.5fr;
+  grid-template-rows: 0.5fr 1fr 0.75fr 2fr 0.25fr;
+  grid-template-areas:
+  ". titolo titolo ."
+  ". canvas0 canvas0 ."
+  ". digit button ."
+  ". canvas1 canvas1 ."
+  ". . . footer";
+}
+
+h1 {
+  background: Yellow;
+  grid-area: titolo;
+}
+
+#canvas0 {
+  background: Red;
+  grid-area: canvas0;
+  align-self: stretch;
+}
+
+#defaultCanvas0 {
+  align-self:stretch;
+}
+
+
+#digit {
+  background: Blue;
+  grid-area: digit;
+}
+
+#button {
+  background: Green;
+  grid-area: button;
+}
+
+#canvas1 {
+  background: Red;
+  grid-area: canvas1;
+}
+
+footer {
+  background: Purple;
+  grid-area: footer;
+}

@@ -37,8 +37,8 @@ class Block {
     this.v *= -1;
   }
 
-  show(here) {
-    here.fill(0, 255, 0);
+  show(here, r, g, b) {
+    here.fill(r, g, b);
     here.rect(this.x, this.y, this.w);
   }
 
