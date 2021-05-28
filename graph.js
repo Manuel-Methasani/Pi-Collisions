@@ -73,4 +73,4 @@ var sketch = function(s) {
 
 }
 
-var cnv2 = new p5(sketch, 'canvas1');
+var cnv2 = new p5(sketch);

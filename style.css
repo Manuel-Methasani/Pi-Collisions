@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  background: Grey;
 }
 
 .container {
@@ -16,38 +17,28 @@ body {
   ". . . footer";
 }
 
-h1 {
-  background: Yellow;
+#titolo {
   grid-area: titolo;
+  text-align:center;
 }
 
 #canvas0 {
-  background: Red;
   grid-area: canvas0;
-  align-self: stretch;
 }
-
-#defaultCanvas0 {
-  align-self:stretch;
-}
-
 
 #digit {
-  background: Blue;
   grid-area: digit;
 }
 
 #button {
-  background: Green;
   grid-area: button;
 }
 
 #canvas1 {
-  background: Red;
   grid-area: canvas1;
 }
 
 footer {
-  background: Purple;
   grid-area: footer;
+  text-align: right;
 }

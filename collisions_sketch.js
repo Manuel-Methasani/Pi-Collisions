@@ -19,11 +19,11 @@ function resetSketch() {
 }
 
 function setBlock() {
-  block1 = new Block(50, 50, 1, 0);
+  block1 = new Block(100, 50, 1, 0);
   //scaling of the bigger block's width with the increase of its mass
-  m2 = 100 ** (Number(digits.value) - 1)
+  m2 = 100 ** (Number(digits.value - 1));
   w2 = 50 + (Number(digits.value - 1) * 10);
-  block2 = new Block(100, w2, m2, 0);
+  block2 = new Block(300, w2, m2, 0);
 }
 
 var sketch = function(c) {
@@ -33,7 +33,7 @@ var sketch = function(c) {
   c.clack;
 
   c.preload = function() {
-    c.clack = c.loadSound('addons/clack.wav')
+    c.clack = c.loadSound('addons/clack.wav');
   }
 
   c.setup = function() {
@@ -55,6 +55,7 @@ var sketch = function(c) {
 
   c.startSketch = function() {
     block2.v = -1;
+    coordinates = [];
     coordinates.push({
       x: block2.v,
       y: block1.v

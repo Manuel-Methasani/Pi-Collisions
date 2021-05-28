@@ -12,19 +12,22 @@
   <script src="block.js"></script>
 </head>
 
-<div class="container" id="gridContainer">
-  <h1>-Pi Collisions-</h1>
-  <div id="script1">
-    <script src="collisions_sketch.js"></script>
+<main>
+  <div class="container" id="gridContainer">
+    <h1 id="titolo">-Pi Collisions-</h1>
+    <div id="script0">
+      <script src="collisions_sketch.js"></script>
+    </div>
+    <div id="digit">
+      <input type="range" min="1" max="9" value="1" class="slider" id="digitSlider">
+    </div>
+    <div id="button"></div>
+    <div id="script1">
+      <script src="graph.js"></script>
+    </div>
+    <footer>Manuel Methasani</footer>
+
   </div>
-  <div id="digit">
-    <input type="range" min="1" max="9" value="1" class="slider" id="digitSlider">
-  </div>
-  <div id="button"></div>
-  <div id="script2">
-  <!--  <script src="graph.js"></script> -->
-  </div>
-  <footer>Footer</footer>
-</div>
+</main>
 
 </html>
