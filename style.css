@@ -20,10 +20,13 @@ body {
 #titolo {
   grid-area: titolo;
   text-align:center;
+  color: #2b3033;
 }
 
 #canvas0 {
   grid-area: canvas0;
+  border-style: solid;
+  border-color:#001a00;
 }
 
 #digit {
@@ -36,9 +39,20 @@ body {
 
 #canvas1 {
   grid-area: canvas1;
+  border-style: solid;
+  border-color:#001a00;
 }
 
 footer {
   grid-area: footer;
-  text-align: right;
+  text-align: center;
+  color:#2b3033;
+}
+
+.slider {
+}
+
+#count {
+  color: #2b3033;
+  font-weight: bold;
 }

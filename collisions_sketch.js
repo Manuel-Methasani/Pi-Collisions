@@ -19,11 +19,11 @@ function resetSketch() {
 }
 
 function setBlock() {
-  block1 = new Block(100, 50, 1, 0);
+  block1 = new Block(cnvWidth / 6, 50, 1, 0);
   //scaling of the bigger block's width with the increase of its mass
   m2 = 100 ** (Number(digits.value - 1));
   w2 = 50 + (Number(digits.value - 1) * 10);
-  block2 = new Block(300, w2, m2, 0);
+  block2 = new Block(cnvWidth / 2, w2, m2, 0);
 }
 
 var sketch = function(c) {
@@ -123,8 +123,19 @@ var sketch = function(c) {
     block1.move(c.timeLeft);
     block2.move(c.timeLeft);
 
-    block1.show(cnv, 171, 100, 46);
-    block2.show(cnv, 116, 94, 61);
+    block1.show(cnv, 255, 184, 77);
+    block2.show(cnv, 255, 204, 128);
+
+    block1.blockText(cnv);
+    block2.blockText(cnv);
+
+    // c.textSize(16);
+    // c.fill(0);
+    // c.textAlign(c.RIGHT, c.TOP);
+    // let txt = 'Mass1:' + block1.m + 'kg';
+    // let txt2 = 'Mass2:' + block2.m + 'kg';
+    // c.text(txt, c.ctx.width - 10, 10);
+    // c.text(txt2, c.ctx.width - 10, 30);
 
     c.countDiv.html(c.doneStr + c.nf(c.count, digits.value));
   }
@@ -133,6 +144,8 @@ var sketch = function(c) {
     let newWidth = document.getElementById('gridContainer').getBoundingClientRect().width;
     let newHeight = document.getElementById('gridContainer').getBoundingClientRect().height;
     c.resizeCanvas(newWidth * 2 / 3, newHeight * 2 / 9);
+    block1.x = newWidth / 6;
+    block2.x = newWidth / 2;
   }
 
 }

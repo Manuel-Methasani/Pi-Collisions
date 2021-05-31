@@ -1,7 +1,9 @@
 let cnv2Width = document.getElementById('gridContainer').getBoundingClientRect().width;
 let cnv2Height = document.getElementById('gridContainer').getBoundingClientRect().height;
-let size;
+let xSize, ySize;
 let coordinates = [];
+let toggle = document.getElementById('toggleButton');
+
 
 //radius is sqrt mass of the moving block because the other one does not move
 //and the velocity square is 0
@@ -26,43 +28,46 @@ var sketch = function(s) {
 
   //modify to consider the canvas a rectangle and not a square anymore
   s.graph = function() {
-    size = s.ctx.width;
-    s.translate(size / 2, size / 2);
+    xSize = s.ctx.width;
+    ySize = s.ctx.height;
+    s.translate(xSize / 2, ySize / 2);
     //axis
     s.strokeWeight(1);
     s.stroke(100);
-    s.line(-size / 2, 0, size / 2, 0);
-    s.line(0, -size / 2, 0, size / 2);
+    s.line(-xSize / 2, 0, xSize / 2, 0);
+    s.line(0, -xSize / 2, 0, ySize / 2);
     s.fill(100);
-    s.triangle(size / 2, 0, size / 2 - 10, 10, size / 2 - 10, -10);
-    s.triangle(0, -size / 2, 10, -size / 2 + 10, -10, -size / 2 + 10);
+    s.triangle(xSize / 2, 0, xSize / 2 - 10, 10, xSize / 2 - 10, -10);
+    s.triangle(0, -ySize / 2, 10, -ySize / 2 + 10, -10, -ySize / 2 + 10);
     //circle
     s.noFill();
     s.strokeWeight(4);
     s.stroke(0);
     s.ellipseMode(s.RADIUS);
-    s.ellipse(0, 0, size * 4 / 9, size * 4 / 9);
+    s.ellipse(0, 0, ySize * 4 / 9, ySize * 4 / 9);
+  }
+
+  s.phase = function() {
+    for (c in coordinates) {
+      s.strokeWeight(1);
+      s.xScl = ySize * 4 / 9;
+      s.yScl = -(ySize * 4 / 9) / (block2.m ** 0.5);
+      s.point(coordinates[c].x * s.xScl, coordinates[c].y * s.yScl);
+      if (c % 2 == 0) {
+        s.stroke(255, 184, 77);
+      } else {
+        s.stroke(255, 204, 128);
+      }
+      if (c > 0) {
+        s.line(coordinates[c - 1].x * s.xScl, coordinates[c - 1].y * s.yScl, coordinates[c].x * s.xScl, coordinates[c].y * s.yScl);
+      }
+    }
   }
 
   s.draw = function() {
     s.background(56, 62, 66);
     s.graph();
-
-    for (c in coordinates) {
-      s.strokeWeight(1);
-      s.xScl = size * 4 / 9;
-      s.yScl = -(size * 4 / 9) / (block2.m ** 0.5);
-      s.point(coordinates[c].x * s.xScl, coordinates[c].y * s.yScl);
-      if (c % 2 == 0) {
-        s.stroke(171, 100, 46);
-      } else {
-        s.stroke(116, 94, 61);
-      }
-      if (c > 0) {
-        s.line(coordinates[c - 1].x * s.xScl, coordinates[c - 1].y * s.yScl, coordinates[c].x * s.xScl, coordinates[c].y * s.yScl);
-      }
-      //maybe make the points more visible and interactable or just add a dom element
-    }
+    s.phase();
   }
 
   s.windowResized = function() {
@@ -73,4 +78,18 @@ var sketch = function(s) {
 
 }
 
-var cnv2 = new p5(sketch);
+let cnv2;
+let tCount = 1;
+
+function setGraph() {
+  cnv2 = new p5(sketch);
+}
+toggle.addEventListener('click', function() {
+  if (tCount % 2 != 0) {
+    setGraph();
+    tCount = 1;
+  } else if (tCount % 2 == 0) {
+    cnv2.remove();
+  }
+  tCount++;
+});
