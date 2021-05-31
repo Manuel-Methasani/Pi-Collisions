@@ -37,6 +37,14 @@ class Block {
     this.v *= -1;
   }
 
+  blockText(here) {
+    here.textSize(16);
+    here.fill(158, 158, 158);
+    here.textAlign(here.CENTER, here.CENTER);
+    let blockTxt = this.m + 'kg';
+    here.text(blockTxt, this.x + this.w / 2 - 1, this.y - 10);
+  }
+
   show(here, r, g, b) {
     here.fill(r, g, b);
     here.rect(this.x, this.y, this.w);
