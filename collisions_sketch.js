@@ -136,8 +136,13 @@ var sketch = function(c) {
     block1.blockText(cnv);
     block2.blockText(cnv);
 
+    <<
+    << << < HEAD
     c.countDiv.html(c.countStr + c.nf(c.count, digits.value));
-    c.doneDiv.html(c.doneStr);
+    c.doneDiv.html(c.doneStr); ===
+    === =
+    c.countDiv.html(c.doneStr + c.nf(c.count, digits.value)); >>>
+    >>> > 22 bdb4ee50d041bad443f892ca55adf529182840
   }
 
   c.windowResized = function() {
