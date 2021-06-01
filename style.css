@@ -1,3 +1,13 @@
+@font-face {
+  src: url(addons/Roboto-Regular.ttf);
+  font-family: roboto;
+}
+
+@font-face {
+  src: url(addons/RobotoCondensed-Regular.ttf);
+  font-family: robotoCondensed;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -15,12 +25,15 @@ body {
   ". digit button ."
   ". canvas1 canvas1 ."
   ". . . footer";
+  align-items: center;
+  justify-items: center;
 }
 
 #titolo {
   grid-area: titolo;
   text-align:center;
   color: #2b3033;
+  font-family: robotoCondensed, sans-serif;
 }
 
 #canvas0 {
@@ -31,10 +44,65 @@ body {
 
 #digit {
   grid-area: digit;
+  font-family: roboto, sans-serif;
+}
+
+#digitSlider {
+  -webkit-appearance: none;
+  width:140px;
+}
+
+#digitSlider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  background: #626669;
+  border-radius: 1px;
+  border: 0.2px solid #010101;
+}
+
+#digitSlider::-webkit-slider-thumb {
+  border: 1px solid #000000;
+  height: 20px;
+  width: 10px;
+  border-radius: 2px;
+  background: #383e42;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -5.5px;
+}
+
+#digitSlider::-moz-range-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  background: #626669;
+  border-radius: 1px;
+  border: 0.2px solid #010101;
+}
+#digitSlider::-moz-range-thumb {
+  border: 1px solid #000000;
+  height: 20px;
+  width: 10px;
+  border-radius: 2px;
+  background: #383e42;
+  cursor: pointer;
+  -webkit-appearance: none;
 }
 
 #button {
   grid-area: button;
+}
+
+#toggleButton, #startButton {
+  font-family: roboto, sans-serif;
+  border-radius:4px;
+  display: block;
+  margin: 0 auto;
+}
+
+#toggleButton {
+  margin-top: 10px;
 }
 
 #canvas1 {
@@ -47,12 +115,12 @@ footer {
   grid-area: footer;
   text-align: center;
   color:#2b3033;
+  font-family: roboto, sans-serif;
 }
 
-.slider {
-}
 
 #count {
   color: #2b3033;
-  font-weight: bold;
+  font-family: roboto, sans-serif;
+  text-align: center;
 }

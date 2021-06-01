@@ -38,11 +38,12 @@ class Block {
   }
 
   blockText(here) {
+    here.textFont(robotoFont);
     here.textSize(16);
     here.fill(158, 158, 158);
     here.textAlign(here.CENTER, here.CENTER);
     let blockTxt = this.m + 'kg';
-    here.text(blockTxt, this.x + this.w / 2 - 1, this.y - 10);
+    here.text(blockTxt, this.x + this.w / 2 - 1, this.y - 13);
   }
 
   show(here, r, g, b) {

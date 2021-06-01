@@ -5,6 +5,7 @@ let frameTime = 2;
 //first collision always with the smaller block
 let blockCollisionNext = true;
 let digits, block1, block2, m2, w2;
+let robotoFont;
 
 function touchStarted() {
   getAudioContext().resume();
@@ -34,6 +35,7 @@ var sketch = function(c) {
 
   c.preload = function() {
     c.clack = c.loadSound('addons/clack.wav');
+    robotoFont = c.loadFont('addons/Roboto-Regular.ttf');
   }
 
   c.setup = function() {
@@ -49,7 +51,7 @@ var sketch = function(c) {
     $("#count").appendTo($("#digit"));
     c.start = c.createButton('Start!');
     c.start.id('startButton');
-    $("#startButton").appendTo($("#button"));
+    $("#startButton").prependTo($("#button"));
     c.start.mousePressed(c.startSketch);
   }
 
