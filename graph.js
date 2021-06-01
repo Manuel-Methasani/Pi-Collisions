@@ -35,7 +35,7 @@ var sketch = function(s) {
     s.strokeWeight(1);
     s.stroke(100);
     s.line(-xSize / 2, 0, xSize / 2, 0);
-    s.line(0, -xSize / 2, 0, ySize / 2);
+    s.line(0, -ySize / 2, 0, ySize / 2);
     s.fill(100);
     s.triangle(xSize / 2, 0, xSize / 2 - 10, 10, xSize / 2 - 10, -10);
     s.triangle(0, -ySize / 2, 10, -ySize / 2 + 10, -10, -ySize / 2 + 10);
@@ -87,9 +87,11 @@ function setGraph() {
 toggle.addEventListener('click', function() {
   if (tCount % 2 != 0) {
     setGraph();
+    cnv2.windowResized();
     tCount = 1;
   } else if (tCount % 2 == 0) {
     cnv2.remove();
+    cnv.preload();
   }
   tCount++;
 });

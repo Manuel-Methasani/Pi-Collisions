@@ -5,7 +5,7 @@ let frameTime = 2;
 //first collision always with the smaller block
 let blockCollisionNext = true;
 let digits, block1, block2, m2, w2;
-let robotoFont;
+let clack, robotoFont;
 
 function touchStarted() {
   getAudioContext().resume();
@@ -20,21 +20,21 @@ function resetSketch() {
 }
 
 function setBlock() {
-  block1 = new Block(cnvWidth / 6, 50, 1, 0);
+  block1 = new Block(cnv.ctx.width * 1 / 4 - 25, 50, 1, 0);
   //scaling of the bigger block's width with the increase of its mass
   m2 = 100 ** (Number(digits.value - 1));
   w2 = 50 + (Number(digits.value - 1) * 10);
-  block2 = new Block(cnvWidth / 2, w2, m2, 0);
+  block2 = new Block(cnv.ctx.width * 3 / 4 - w2 / 2, w2, m2, 0);
 }
 
 var sketch = function(c) {
   c.countDiv;
+  c.doneDiv;
   c.count = 0;
   c.start;
-  c.clack;
 
   c.preload = function() {
-    c.clack = c.loadSound('addons/clack.wav');
+    clack = c.loadSound('addons/clack.wav');
     robotoFont = c.loadFont('addons/Roboto-Regular.ttf');
   }
 
@@ -48,14 +48,18 @@ var sketch = function(c) {
     });
     c.countDiv = c.createDiv(c.count);
     c.countDiv.id('count');
+    c.doneDiv = c.createDiv();
+    c.doneDiv.id('done');
     $("#count").appendTo($("#digit"));
-    c.start = c.createButton('Start!');
+    $("#done").appendTo($("#digit"));
+    c.start = c.createButton('Inizia!');
     c.start.id('startButton');
     $("#startButton").prependTo($("#button"));
     c.start.mousePressed(c.startSketch);
   }
 
   c.startSketch = function() {
+    resetSketch();
     block2.v = -1;
     coordinates = [];
     coordinates.push({
@@ -70,6 +74,7 @@ var sketch = function(c) {
     c.timeLeft = frameTime;
     c.clackSound = false;
     c.doneStr = '';
+    c.countStr = 'Numero di urti: '
 
     while (true) {
       //terniary operator, if first true then variable is equal to the second
@@ -78,7 +83,7 @@ var sketch = function(c) {
         block1.time2Block(block2) : block1.time2Wall();
       //when the collisions stop happening
       if (block1.v >= 0 & block2.v > 0 & block1.v < block2.v) {
-        c.doneStr = 'Collisions done! ';
+        c.doneStr = 'Gli urti sono finiti!';
         break;
       }
       //first exit of the while loop, it makes the loop go further only when
@@ -117,7 +122,7 @@ var sketch = function(c) {
     }
 
     if (c.clackSound) {
-      c.clack.play();
+      clack.play();
     }
 
     //happens if while loop breaks, basically it makes the blocks move
@@ -131,23 +136,16 @@ var sketch = function(c) {
     block1.blockText(cnv);
     block2.blockText(cnv);
 
-    // c.textSize(16);
-    // c.fill(0);
-    // c.textAlign(c.RIGHT, c.TOP);
-    // let txt = 'Mass1:' + block1.m + 'kg';
-    // let txt2 = 'Mass2:' + block2.m + 'kg';
-    // c.text(txt, c.ctx.width - 10, 10);
-    // c.text(txt2, c.ctx.width - 10, 30);
-
-    c.countDiv.html(c.doneStr + c.nf(c.count, digits.value));
+    c.countDiv.html(c.countStr + c.nf(c.count, digits.value));
+    c.doneDiv.html(c.doneStr);
   }
 
   c.windowResized = function() {
     let newWidth = document.getElementById('gridContainer').getBoundingClientRect().width;
     let newHeight = document.getElementById('gridContainer').getBoundingClientRect().height;
     c.resizeCanvas(newWidth * 2 / 3, newHeight * 2 / 9);
-    block1.x = newWidth / 6;
-    block2.x = newWidth / 2;
+    block1.x = c.ctx.width * 1 / 4 - block1.w / 2;
+    block2.x = c.ctx.width * 3 / 4 - block2.w / 2;
   }
 
 }
