@@ -2,7 +2,7 @@
 
 Questa è una repository per una pagina web che ho progettato come parte dell'elaborato per l'Esame di Stato.
 
-In questa pagina web, utilizzando la libreria [p5.js](https://p5js.org/) e basandomi su una pubblicazione di Gregor Galperin, [*Playing pool with pi*](https://www.maths.tcd.ie/~lebed/Galperin.%20Playing%20pool%20with%20pi.pdf), ho progettato un animazione interattiva che mostra ciò che accade nel sistema ipotizzato dallo stesso.
+In questa pagina web, utilizzando la libreria [p5.js](https://p5js.org/) e basandomi su una pubblicazione di Gregor Galperin, [*Playing pool with π*](https://www.maths.tcd.ie/~lebed/Galperin.%20Playing%20pool%20with%20pi.pdf), ho progettato un animazione interattiva che mostra ciò che accade nel sistema ipotizzato dallo stesso.
 
 ## Il sistema di Galperin
 
