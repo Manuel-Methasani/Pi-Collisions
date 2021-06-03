@@ -89,9 +89,11 @@ toggle.addEventListener('click', function() {
     setGraph();
     cnv2.windowResized();
     tCount = 1;
+    document.getElementById("toggleButton").innerHTML = "Disattiva grafico";
   } else if (tCount % 2 == 0) {
     cnv2.remove();
     cnv.preload();
+    document.getElementById("toggleButton").innerHTML = "Attiva grafico";
   }
   tCount++;
 });

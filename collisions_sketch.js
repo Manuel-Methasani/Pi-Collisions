@@ -136,23 +136,17 @@ var sketch = function(c) {
     block1.blockText(cnv);
     block2.blockText(cnv);
 
-    <<
-    << << < HEAD
     c.countDiv.html(c.countStr + c.nf(c.count, digits.value));
-    c.doneDiv.html(c.doneStr); ===
-    === =
-    c.countDiv.html(c.doneStr + c.nf(c.count, digits.value)); >>>
-    >>> > 22 bdb4ee50d041bad443f892ca55adf529182840
-  }
+    c.doneDiv.html(c.doneStr);
 
-  c.windowResized = function() {
-    let newWidth = document.getElementById('gridContainer').getBoundingClientRect().width;
-    let newHeight = document.getElementById('gridContainer').getBoundingClientRect().height;
-    c.resizeCanvas(newWidth * 2 / 3, newHeight * 2 / 9);
-    block1.x = c.ctx.width * 1 / 4 - block1.w / 2;
-    block2.x = c.ctx.width * 3 / 4 - block2.w / 2;
-  }
+    c.windowResized = function() {
+      let newWidth = document.getElementById('gridContainer').getBoundingClientRect().width;
+      let newHeight = document.getElementById('gridContainer').getBoundingClientRect().height;
+      c.resizeCanvas(newWidth * 2 / 3, newHeight * 2 / 9);
+      block1.x = c.ctx.width * 1 / 4 - block1.w / 2;
+      block2.x = c.ctx.width * 3 / 4 - block2.w / 2;
+    }
 
+  }
 }
-
 var cnv = new p5(sketch);
