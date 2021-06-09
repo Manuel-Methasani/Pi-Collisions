@@ -13,8 +13,6 @@ function radius() {
 }
 
 var sketch = function(s) {
-  s.xPos;
-  s.yPos;
 
   s.setup = function() {
     s.ctx = s.createCanvas(cnv2Width * 2 / 3, cnv2Height * 4 / 9);
@@ -26,7 +24,6 @@ var sketch = function(s) {
     });
   }
 
-  //modify to consider the canvas a rectangle and not a square anymore
   s.graph = function() {
     xSize = s.ctx.width;
     ySize = s.ctx.height;
@@ -43,9 +40,14 @@ var sketch = function(s) {
     s.noFill();
     s.strokeWeight(4);
     s.stroke(0);
-    s.ellipseMode(s.RADIUS);
-    s.ellipse(0, 0, ySize * 4 / 9, ySize * 4 / 9);
+    // s.ellipseMode(s.RADIUS);
+    if (xSize > ySize) {
+      s.ellipse(0, 0, ySize * 3 / 4, ySize * 3 / 4);
+    } else {
+      s.ellipse(0, 0, xSize * 3 / 4, xSize * 3 / 4);
+    }
   }
+
 
   s.phase = function() {
     for (c in coordinates) {
