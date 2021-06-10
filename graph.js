@@ -52,8 +52,8 @@ var sketch = function(s) {
   s.phase = function() {
     for (c in coordinates) {
       s.strokeWeight(1);
-      s.xScl = ySize * 4 / 9;
-      s.yScl = -(ySize * 4 / 9) / (block2.m ** 0.5);
+      s.xScl = ySize * 3 / 8;
+      s.yScl = -(ySize * 3 / 8) / (block2.m ** 0.5);
       s.point(coordinates[c].x * s.xScl, coordinates[c].y * s.yScl);
       if (c % 2 == 0) {
         s.stroke(255, 184, 77);
