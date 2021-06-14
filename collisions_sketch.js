@@ -20,10 +20,11 @@ function resetSketch() {
 }
 
 function setBlock() {
-  block1 = new Block(cnv.ctx.width * 1 / 4 - 25, 50, 1, 0);
+  block1 = new Block(cnv.ctx.width * 1 / 4 - 25, cnv.ctx.height / 3, 1, 0);
   //scaling of the bigger block's width with the increase of its mass
   m2 = 100 ** (Number(digits.value - 1));
-  w2 = 50 + (Number(digits.value - 1) * 10);
+  let sliderWeight = (Number(digits.value - 1) * 10);
+  w2 = cnv.map(sliderWeight, 0, 70, block1.w, cnv.ctx.height - 24);
   block2 = new Block(cnv.ctx.width * 3 / 4 - w2 / 2, w2, m2, 0);
 }
 

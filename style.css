@@ -18,7 +18,7 @@ body {
   display: grid;
   height: 100vh;
   grid-template-columns: 0.5fr 1fr 1fr 0.5fr;
-  grid-template-rows: 0.5fr 1fr 0.75fr 2fr 0.25fr;
+  grid-template-rows: 0.25fr 1fr 0.5fr 2fr 0.25fr;
   grid-template-areas:
   ". titolo titolo ."
   ". canvas0 canvas0 ."
