@@ -4,7 +4,7 @@ let cnvHeight = document.getElementById('gridContainer').getBoundingClientRect()
 let frameTime = 2;
 //first collision always with the smaller block
 let blockCollisionNext = true;
-let digits, block1, block2, m2, w2;
+let digits, block1, block2, m1, w1;
 let clack, robotoFont;
 
 function touchStarted() {
@@ -20,12 +20,12 @@ function resetSketch() {
 }
 
 function setBlock() {
-  block1 = new Block(cnv.ctx.width * 1 / 4 - 25, cnv.ctx.height / 3, 1, 0);
+  block2 = new Block(cnv.ctx.width * 1 / 4 - 25, cnv.ctx.height / 3, 1, 0);
   //scaling of the bigger block's width with the increase of its mass
-  m2 = 100 ** (Number(digits.value - 1));
+  m1 = 100 ** (Number(digits.value - 1));
   let sliderWeight = (Number(digits.value - 1) * 10);
-  w2 = cnv.map(sliderWeight, 0, 70, block1.w, cnv.ctx.height - 24);
-  block2 = new Block(cnv.ctx.width * 3 / 4 - w2 / 2, w2, m2, 0);
+  w1 = cnv.map(sliderWeight, 0, 70, block2.w, cnv.ctx.height - 24);
+  block1 = new Block(cnv.ctx.width * 3 / 4 - w1 / 2, w1, m1, 0);
 }
 
 var sketch = function(c) {
@@ -61,11 +61,11 @@ var sketch = function(c) {
 
   c.startSketch = function() {
     resetSketch();
-    block2.v = -1;
+    block1.v = -1;
     coordinates = [];
     coordinates.push({
-      x: block2.v,
-      y: block1.v
+      x: block1.v,
+      y: block2.v
     });
   }
 
@@ -81,9 +81,9 @@ var sketch = function(c) {
       //terniary operator, if first true then variable is equal to the second
       //otherwise equal to the third
       c.time2Collision = blockCollisionNext ?
-        block1.time2Block(block2) : block1.time2Wall();
+        block2.time2Block(block1) : block2.time2Wall();
       //when the collisions stop happening
-      if (block1.v >= 0 & block2.v > 0 & block1.v < block2.v) {
+      if (block2.v >= 0 & block1.v > 0 & block2.v < block1.v) {
         c.doneStr = 'Gli urti sono finiti!';
         break;
       }
@@ -102,17 +102,17 @@ var sketch = function(c) {
         block1.v = c.v1;
         block2.v = c.v2;
         coordinates.push({
-          x: block2.v,
-          y: block1.v
+          x: block1.v,
+          y: block2.v
         });
         c.clackSound = true;
         c.count++;
       } //wall collision
       else {
-        block1.reverse();
+        block2.reverse();
         coordinates.push({
           x: coordinates[coordinates.length - 1].x,
-          y: block1.v
+          y: block2.v
         });
         c.clackSound = true;
         c.count++;
@@ -131,8 +131,8 @@ var sketch = function(c) {
     block1.move(c.timeLeft);
     block2.move(c.timeLeft);
 
-    block1.show(cnv, 255, 184, 77);
-    block2.show(cnv, 255, 204, 128);
+    block1.show(cnv, 255, 204, 128);
+    block2.show(cnv, 255, 184, 77);
 
     block1.blockText(cnv);
     block2.blockText(cnv);
@@ -144,8 +144,8 @@ var sketch = function(c) {
       let newWidth = document.getElementById('gridContainer').getBoundingClientRect().width;
       let newHeight = document.getElementById('gridContainer').getBoundingClientRect().height;
       c.resizeCanvas(newWidth * 2 / 3, newHeight * 2 / 9);
-      block1.x = c.ctx.width * 1 / 4 - block1.w / 2;
-      block2.x = c.ctx.width * 3 / 4 - block2.w / 2;
+      block2.x = c.ctx.width * 1 / 4 - block1.w / 2;
+      block1.x = c.ctx.width * 3 / 4 - block2.w / 2;
     }
 
   }

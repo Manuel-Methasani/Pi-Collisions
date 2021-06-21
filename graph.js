@@ -8,7 +8,7 @@ let toggle = document.getElementById('toggleButton');
 //radius is sqrt mass of the moving block because the other one does not move
 //and the velocity square is 0
 function radius() {
-  let r = cnv2.int(block2.m ** 0.5);
+  let r = cnv2.int(block1.m ** 0.5);
   return r;
 }
 
@@ -53,7 +53,7 @@ var sketch = function(s) {
     for (c in coordinates) {
       s.strokeWeight(1);
       s.xScl = ySize * 3 / 8;
-      s.yScl = -(ySize * 3 / 8) / (block2.m ** 0.5);
+      s.yScl = -(ySize * 3 / 8) / (block1.m ** 0.5);
       s.point(coordinates[c].x * s.xScl, coordinates[c].y * s.yScl);
       if (c % 2 == 0) {
         s.stroke(255, 184, 77);

@@ -45,6 +45,7 @@ body {
 #digit {
   grid-area: digit;
   font-family: roboto, sans-serif;
+  font-size: 20px;
 }
 
 #digitSlider {
@@ -96,6 +97,7 @@ body {
 
 #toggleButton, #startButton {
   font-family: roboto, sans-serif;
+  font-size: 20px;
   border-radius:4px;
   display: block;
   margin: 0 auto;
