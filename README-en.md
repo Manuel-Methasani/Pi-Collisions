@@ -1,4 +1,4 @@
-[*Italian*](https://github.com/Manuel-Methasani/Pi-Collisions/blob/main/README.md)
+Leggilo in [*Italiano*](https://github.com/Manuel-Methasani/Pi-Collisions/blob/main/README.md)
 
 # Galperin Collisions
 

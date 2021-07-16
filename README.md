@@ -1,4 +1,4 @@
-[*Inglese*](https://github.com/Manuel-Methasani/Pi-Collisions/blob/main/README-en.md)
+Read it in [*English*](https://github.com/Manuel-Methasani/Pi-Collisions/blob/main/README-en.md)
 
 # Urti di Galperin
 
