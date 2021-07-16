@@ -1,4 +1,4 @@
-[*Inglese*]()
+[*Inglese*](https://github.com/Manuel-Methasani/Pi-Collisions/blob/main/README-en.md)
 
 # Urti di Galperin
 
@@ -34,4 +34,4 @@ Quindi **si consiglia** in questi casi di disattivare il grafico quando c'è abb
 Per costruire questa pagina web ho utilizzato prinicipalmente due risorse trovate in rete:
 
 1. un video del canale *3Blue1Brown* su Youtube che spiega la dimostrazione geometrica sottesa al sistema di Galperin, [video con la dimostrazione geometrica](https://www.youtube.com/watch?v=jsYwFizhncE);
-2. un tutorial trovato in rete per aiutarmi con la programmazione di parte della pagina web, [link al tutorial per parte dell'animazione](https://thecodingtrain.com/CodingChallenges/139-pi-collisions.html)).
+2. un tutorial trovato in rete per aiutarmi con la programmazione di parte della pagina web, [link al tutorial per parte dell'animazione](https://thecodingtrain.com/CodingChallenges/139-pi-collisions.html).

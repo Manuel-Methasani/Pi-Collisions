@@ -1,4 +1,4 @@
-[*Italian*]()
+[*Italian*](https://github.com/Manuel-Methasani/Pi-Collisions/blob/main/README.md)
 
 # Galperin Collisions
 
@@ -26,11 +26,11 @@ Especially when the block has a very big mass, with the slider set to the higher
 **It is recommended** to toggle off the graph beneath if you want to keep the slider to the higher values since the graph will in this case slow down the simulation even more.
 
 If the graph is toggled off when a lot of collisions are happening, the page may just stop working. This happens because of the way the code itself is written. When the graph is toggled off, the audio of the page is also turned off and it needs a small amount of time to turn on again. If the program wants to play a sound before the turning on of the audio itself, then an error occurs and the page stops working.
-**It is recommended* to toggle off the graph when there is enough time between collisions.
+**It is recommended** to toggle off the graph when there is enough time between collisions.
 
 ### Resources used for this project
 
 To build this project I mainly used two resources found online:
 
 1. a YouTube video from the channel *3Blue1Brown* which shows the geometric explanation of Galperin's system, [link to the video](https://www.youtube.com/watch?v=jsYwFizhncE);
-2. a tutorial found online that helped me to code part of the web-page, [link to the tutorial](https://thecodingtrain.com/CodingChallenges/139-pi-collisions.html)).
+2. a tutorial found online that helped me to code part of the web-page, [link to the tutorial](https://thecodingtrain.com/CodingChallenges/139-pi-collisions.html).
